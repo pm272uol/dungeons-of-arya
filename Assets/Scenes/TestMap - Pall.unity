@@ -381,7 +381,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2829099832771946518, guid: be5985c29f75e401eabe65908d9295fe,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -610,7 +610,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2829099832771946518, guid: be5985c29f75e401eabe65908d9295fe,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -846,7 +846,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2829099832771946518, guid: be5985c29f75e401eabe65908d9295fe,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3996,7 +3996,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2829099832771946518, guid: be5985c29f75e401eabe65908d9295fe,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4017,7 +4017,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669314949}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ab7ab62760fd9410da6318051515f4f8, type: 2}
   m_CullingMode: 0
