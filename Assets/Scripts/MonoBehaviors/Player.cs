@@ -2,6 +2,9 @@
 
 public class Player : Character
 {
+    public Inventory inventoryPrefab;
+
+    Inventory inventory;
 
     public HealthBar healthBarPrefab;
 
@@ -9,6 +12,8 @@ public class Player : Character
 
     private void Start()
     {
+        inventory = Instantiate(inventoryPrefab);
+
         hitPoints.value = startingHitPoints;
 
         healthbar = Instantiate(healthBarPrefab);
@@ -32,6 +37,8 @@ public class Player : Character
                 switch(hitObject.itemType)
                 {
                     case Item.ItemType.COIN: // If the object is a coin
+
+                        shouldDisappear = inventory.AddItem(hitObject);
 
                         shouldDisappear = true;
                         break;
