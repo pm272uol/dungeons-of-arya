@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Player : Character
 {
+    public HitPoints hitPoints; // The health points of the character
+
     public Inventory inventoryPrefab;
 
     Inventory inventory;
@@ -10,15 +13,20 @@ public class Player : Character
 
     HealthBar healthbar;
 
+    private void OnEnable()
+    {
+        ResetCharacter();
+    }
+
     private void Start()
     {
-        inventory = Instantiate(inventoryPrefab);
+        //inventory = Instantiate(inventoryPrefab);
 
-        hitPoints.value = startingHitPoints;
+        //healthbar = Instantiate(healthBarPrefab);
 
-        healthbar = Instantiate(healthBarPrefab);
+        //healthbar.character = this;
 
-        healthbar.character = this;
+        //hitPoints.value = startingHitPoints;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -78,6 +86,48 @@ public class Player : Character
         return false; // if the player already has maxHitPoints
 
         
+    }
+
+    public override IEnumerator DamageCharacter(int damage, float interval) // Damage the enemy
+    {
+        while (true)
+        {
+            hitPoints.value = hitPoints.value - damage;
+
+            if (hitPoints.value <= float.Epsilon)
+            {
+                KillCharacter();
+                break;
+            }
+
+            if (interval > float.Epsilon)
+            {
+                yield return new WaitForSeconds(interval);
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    public override void KillCharacter()
+    {
+        base.KillCharacter();
+
+        Destroy(healthbar.gameObject);
+        Destroy(inventory.gameObject);
+    }
+
+    public override void ResetCharacter()
+    {
+        inventory = Instantiate(inventoryPrefab);
+
+        healthbar = Instantiate(healthBarPrefab);
+
+        healthbar.character = this;
+
+        hitPoints.value = startingHitPoints;
     }
 
 }
