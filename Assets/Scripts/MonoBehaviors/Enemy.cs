@@ -7,6 +7,7 @@ public class Enemy : Character
     float hitPoints;
 
     public int damageStrength;
+
     Coroutine damageCoroutine;
 
     // Start is called before the first frame update
@@ -25,6 +26,8 @@ public class Enemy : Character
     {
         while (true)
         {
+            StartCoroutine(FlickerCharacter()); // Flicker the character
+
             hitPoints = hitPoints - damage;
 
             if(hitPoints <= float.Epsilon){
@@ -61,7 +64,7 @@ public class Enemy : Character
 
             if (damageCoroutine == null)
             {
-                damageCoroutine = StartCoroutine(player.DamageCharacter(damageStrength, 1.0f));
+                damageCoroutine = StartCoroutine(player.DamageCharacter(damageStrength, 1.0f)); // Damage the player with damageStrength
             }
         }
     }

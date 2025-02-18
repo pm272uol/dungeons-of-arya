@@ -32,6 +32,8 @@ public class Wander : MonoBehaviour
     public float minY = 23f; // Y minimum
     public float maxY = 31f; // Y maximum
 
+    CircleCollider2D circleCollider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,12 +45,14 @@ public class Wander : MonoBehaviour
 
         StartCoroutine(WanderRoutine());
 
+        circleCollider = GetComponent<CircleCollider2D>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.DrawLine(rb2d.position, endPosition, Color.red);
     }
 
     public IEnumerator WanderRoutine()
@@ -77,12 +81,12 @@ public class Wander : MonoBehaviour
     void ChooseNewEndpoint()
     {
 
-        // 生成范围内的随机坐标
+        // Generate random X and Y
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
 
-        // 设置endPosition为新生成的随机坐标
-        endPosition = new Vector3(randomX, randomY, 0); // Z保持为0
+        // Set endPosition as end point
+        endPosition = new Vector3(randomX, randomY, 0); // Z stays for 0
 
 
         //currentAngle += Random.Range(0, 360);
@@ -106,7 +110,7 @@ public class Wander : MonoBehaviour
 
         while(remainingDistance > float.Epsilon)
         {
-            if(targetTransform!= null)
+            if(targetTransform != null)
             {
                 endPosition = targetTransform.position;
             }
@@ -161,6 +165,14 @@ public class Wander : MonoBehaviour
             }
 
             targetTransform = null; // Set the target to null (stop chasing)
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(circleCollider != null)
+        {
+            Gizmos.DrawWireSphere(transform.position, circleCollider.radius);
         }
     }
 }

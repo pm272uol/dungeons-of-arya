@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f74200f28b850f41b625b10f3c943f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 2
-  startingHitPoints: 2
+  maxHitPoints: 20
+  startingHitPoints: 20
   damageStrength: 1
 --- !u!58 &2674231761285779033
 CircleCollider2D:
@@ -201,3 +201,7 @@ MonoBehaviour:
   wanderSpeed: 0.8
   directionChangeInteval: 3
   followPlayer: 1
+  minX: 30
+  maxX: 40
+  minY: 23
+  maxY: 31
