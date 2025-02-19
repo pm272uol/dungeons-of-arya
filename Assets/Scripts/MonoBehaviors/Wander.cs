@@ -119,6 +119,16 @@ public class Wander : MonoBehaviour
             {
                 animator.SetBool("isWalking", true);
 
+                // Set the original position to be Vector3
+                Vector3 originalPosition = new Vector3(rigidbodyToMove.position.x, rigidbodyToMove.position.y, 0);
+
+                // Calculate direction
+                Vector3 direction = (endPosition - originalPosition).normalized;
+
+                // Update animator parameters
+                animator.SetFloat("xDir", direction.x);
+                animator.SetFloat("yDir", direction.y);
+
                 Vector3 newPosition = Vector3.MoveTowards(rigidbodyToMove.position, endPosition, speed * Time.deltaTime);
 
                 rb2d.MovePosition(newPosition);

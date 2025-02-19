@@ -13,6 +13,11 @@ public class Player : Character
 
     HealthBar healthbar;
 
+    public float meleeRange = 2.0f; // The range of Melee Attack
+    public int meleeDamage = 5; // The damage of Melee Attack
+
+    private Animator animator;
+
     private void OnEnable()
     {
         ResetCharacter();
@@ -20,14 +25,70 @@ public class Player : Character
 
     private void Start()
     {
-        //inventory = Instantiate(inventoryPrefab);
 
-        //healthbar = Instantiate(healthBarPrefab);
-
-        //healthbar.character = this;
-
-        //hitPoints.value = startingHitPoints;
+        animator = GetComponent<Animator>();
     }
+
+    private void Update()
+    {
+        // Melee Attack
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            MeleeAttack();
+        }
+    }
+
+    void MeleeAttack()
+    {
+        // find the closet enemy
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, meleeRange);
+        Collider2D closestEnemy = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.CompareTag("EmenyObject")) // Get all the enemy
+            {
+                float distance = Vector2.Distance(transform.position, enemy.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestEnemy = enemy;
+                }
+            }
+        }
+
+        if (closestEnemy != null) // If there is a closet enemy
+        {
+            // Calculate the attack direction
+            Vector2 attackDirection = closestEnemy.transform.position - transform.position;
+            attackDirection.Normalize();
+
+            // Set the animation of attack
+            if( animator != null)
+            {
+                animator.SetFloat("attackXDir", attackDirection.x);
+                animator.SetFloat("attackYDir", attackDirection.y);
+                animator.SetTrigger("MeleeAttack");
+            }
+
+            // Damage the enemy
+            Enemy enemyComponent = closestEnemy.GetComponent<Enemy>();
+            StartCoroutine(enemyComponent.DamageCharacter(meleeDamage, 0));
+
+        } else // If the is not an enemy
+        {
+            // Set the animation of attack south
+            if (animator != null)
+            {
+                animator.SetFloat("attackXDir", 0.0f);
+                animator.SetFloat("attackYDir", -1.0f);
+                animator.SetTrigger("MeleeAttack");
+            }
+
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -131,6 +192,12 @@ public class Player : Character
         healthbar.character = this;
 
         hitPoints.value = startingHitPoints;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, meleeRange);
     }
 
 }

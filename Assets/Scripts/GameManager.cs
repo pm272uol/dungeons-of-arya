@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public SpawnPoint playerSpawnPoint;
 
-    public SpawnPoint enemySpawnPoint;
+    //public SpawnPoint enemySpawnPoint;
 
     //public static GameManager Instance { get; private set; }
     public static GameManager Instance = null;
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     public void SetupScene()
     {
         SpawnPlayer();
-        SpawnEnemy();
+        //SpawnEnemy();
     }
 
     public void SpawnPlayer()
@@ -71,12 +71,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SpawnEnemy()
-    {
-        if (enemySpawnPoint != null)
-        {
-            GameObject enemy = enemySpawnPoint.SpawnObject();
-        }
-    }
+    //public void SpawnEnemy()
+    //{
+    //    if (enemySpawnPoint != null)
+    //    {
+    //        GameObject enemy = enemySpawnPoint.SpawnObject();
+    //    }
+    //}
 }
 

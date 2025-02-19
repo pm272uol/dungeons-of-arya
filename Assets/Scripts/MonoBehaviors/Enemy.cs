@@ -10,10 +10,12 @@ public class Enemy : Character
 
     Coroutine damageCoroutine;
 
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -62,6 +64,8 @@ public class Enemy : Character
         {
             Player player = collision.gameObject.GetComponent<Player>();
 
+            animator.SetBool("Attack", true); // Set the animation of attack
+
             if (damageCoroutine == null)
             {
                 damageCoroutine = StartCoroutine(player.DamageCharacter(damageStrength, 1.0f)); // Damage the player with damageStrength
@@ -73,7 +77,10 @@ public class Enemy : Character
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(damageCoroutine != null)
+
+            animator.SetBool("Attack", false); // finish the animation of attack
+
+            if (damageCoroutine != null)
             {
                 StopCoroutine(damageCoroutine);
                 damageCoroutine = null;

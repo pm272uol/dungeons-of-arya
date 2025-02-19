@@ -8,10 +8,15 @@ public abstract class Character : MonoBehaviour
 
     public float startingHitPoints; // The starting hit points of the character
 
+    public bool isDead = false; // Check if the character is dead
+
     public virtual void KillCharacter()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        isDead = true;
+        gameObject.SetActive(false); // handle death logic, such as hiding the character
     }
+
 
     public abstract void ResetCharacter();
 
