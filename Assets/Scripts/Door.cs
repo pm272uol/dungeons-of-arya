@@ -6,6 +6,12 @@ public class Door : MonoBehaviour
 {
     private bool isOpen = false;
 
+
+    private void Start()
+    {
+        gameObject.SetActive(true);
+    }
+
     public void OpenDoor()
     {
         if (!isOpen)
