@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TestMap - Pall.unity
+    guid: 04585f8d1f9f14b35ba6ddf0bce37ecd
   m_configObjects: {}
