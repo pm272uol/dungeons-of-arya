@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public bool isPaused;
+    public static bool isPaused = false;
     public GameObject pauseMenu;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        pauseMenu.SetActive(false);
-    }
+    // void Start()
+    // {
+    //     pauseMenu.SetActive(false);
+    // }
 
     // Update is called once per frame
     void Update()
@@ -34,14 +34,14 @@ public class PauseMenu : MonoBehaviour
     {
          pauseMenu.SetActive(false);
          Time.timeScale = 1f;
-         isPaused = true;
+         isPaused = false;
     }
 
     public void PauseGame() 
     {
          pauseMenu.SetActive(true);
          Time.timeScale = 0f;
-         isPaused = false;
+         isPaused = true;
     }
 
     public void QuitGame()
@@ -52,6 +52,6 @@ public class PauseMenu : MonoBehaviour
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("TestMap - Pall");
+        SceneManager.LoadScene("TestMap - Bill");
     }
 }

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestMap - Pall.unity
-    guid: 04585f8d1f9f14b35ba6ddf0bce37ecd
+    path: Assets/Scenes/TestMap - Bill.unity
+    guid: dd2ae73a4ad7dad4c8bf8629831c278d
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 3b232f02f190f564eb64393b24c8a96a
   m_configObjects: {}

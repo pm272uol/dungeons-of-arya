@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Button_UI : MonoBehaviour
 {
-    [SerializeField] private string newLevel = "TestMap - Pall";
+    [SerializeField] private string newLevel = "TestMap - Bill";
     
     public void StartGameButton()
     {
