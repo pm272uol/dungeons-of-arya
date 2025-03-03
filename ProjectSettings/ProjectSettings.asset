@@ -663,6 +663,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Build: 0
     UNet: 1
   luminIcon:
     m_Name: 
@@ -676,10 +677,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 6e921529-cef9-4699-b991-ddb48a151d93
+  cloudProjectId: 989ec6c8-bd9c-4bf9-8571-e01bebc7d3dd
   framebufferDepthMemorylessMode: 0
   projectName: Dungeons of Arya
-  organizationId: pmuol
+  organizationId: vilinie
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
