@@ -64,12 +64,54 @@ public class Enemy : Character
         {
             Player player = collision.gameObject.GetComponent<Player>();
 
-            animator.SetBool("Attack", true); // Set the animation of attack
+           
 
-            if (damageCoroutine == null)
+
+            if (AnimatorHasParameter(animator, "BossAttack1")) // If the animator is a boss (has boss attack method)
             {
-                damageCoroutine = StartCoroutine(player.DamageCharacter(damageStrength, 1.0f)); // Damage the player with damageStrength
+                int randomAttackMethod = Random.Range(1, 4);
+
+                if (randomAttackMethod == 1)
+                {
+                    animator.SetBool("BossAttack1", true); // Set the method of attack to be method 1
+
+                    if (damageCoroutine == null)
+                    {
+                        damageCoroutine = StartCoroutine(player.DamageCharacter(damageStrength, 1.0f)); // Damage the player with damageStrength
+                    }
+                }
+                else if (randomAttackMethod == 2)
+                {
+                    animator.SetBool("BossAttack2", true); // Set the method of attack to be method 2
+
+                    if (damageCoroutine == null)
+                    {
+                        damageCoroutine = StartCoroutine(player.DamageCharacter(damageStrength * 2, 1.0f)); // Damage the player with damageStrength * 2
+                    }
+                }
+                else if (randomAttackMethod == 3)
+                {
+                    animator.SetBool("BossAttack3", true); // Set the method of attack to be method 2
+
+                    if (damageCoroutine == null)
+                    {
+                        damageCoroutine = StartCoroutine(player.DamageCharacter(damageStrength * 3, 1.0f)); // Damage the player with damageStrength * 3
+                    }
+                }
+            } 
+            else
+            {
+                musicManager.PlayEnemyDamagePlayerMusic();
+
+                animator.SetBool("Attack", true); // Normal enemy attack
+
+                if (damageCoroutine == null)
+                {
+                    damageCoroutine = StartCoroutine(player.DamageCharacter(damageStrength, 1.0f)); // Damage the player with damageStrength
+                }
             }
+
+
         }
     }
 
@@ -80,12 +122,34 @@ public class Enemy : Character
 
             animator.SetBool("Attack", false); // finish the animation of attack
 
+            if (AnimatorHasParameter(animator, "BossAttack1"))
+            {
+                animator.SetBool("BossAttack1", false); // Set the method of attack to be method 1
+
+                animator.SetBool("BossAttack2", false); // Set the method of attack to be method 2
+
+                animator.SetBool("BossAttack3", false); // Set the method of attack to be method 3
+
+            }
+
             if (damageCoroutine != null)
             {
                 StopCoroutine(damageCoroutine);
                 damageCoroutine = null;
             }
         }
+    }
+
+    private bool AnimatorHasParameter(Animator animator, string paramName) // Check if the animator has the parameter
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.name == paramName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 

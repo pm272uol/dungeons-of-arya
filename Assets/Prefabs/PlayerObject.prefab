@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 994430199723738651}
   - component: {fileID: 1706933388}
   - component: {fileID: -4617664098865657483}
+  - component: {fileID: -9061463985733506616}
   m_Layer: 8
   m_Name: PlayerObject
   m_TagString: Player
@@ -31,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994430199723738641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -11.2, z: 0}
+  m_LocalPosition: {x: 0, y: -11.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 828371193
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 99
   m_Sprite: {fileID: 356873946747716391, guid: bc132f9f5d100504ba658de03d5dafc3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -180,12 +181,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 10
   startingHitPoints: 6
+  isDead: 0
+  SwordSound: {fileID: 8300000, guid: 4cafecb89693d794588259bb0c527779, type: 3}
+  HealPotion: {fileID: 8300000, guid: 5bcbe93a898c7a24f81b038ee9ac5809, type: 3}
+  CoinSound: {fileID: 8300000, guid: 7a12b0f759794304c9db013ebbac12d7, type: 3}
+  FlowerStoneSound: {fileID: 8300000, guid: 26e6dd7440e17064ca4dad0cf2bc2e3a, type: 3}
+  audioSource: {fileID: 0}
   hitPoints: {fileID: 11400000, guid: b1050b81a00bb0643ab71f8d2e0e0143, type: 2}
   inventoryPrefab: {fileID: 4163299872554046925, guid: a895a96c1ba691a49a0d2b9808b7b1d6,
     type: 3}
   healthBarPrefab: {fileID: 4665428904666865533, guid: b8eda886f6d5f664ab2e1dcbd41bde73,
     type: 3}
-  meleeRange: 2
+  meleeRange: 1
   meleeDamage: 5
 --- !u!114 &-4617664098865657483
 MonoBehaviour:
@@ -204,3 +211,101 @@ MonoBehaviour:
   poolSize: 3
   weaponVelocity: 2
   animator: {fileID: 0}
+  AmmoSound: {fileID: 8300000, guid: 9be42f8ad00d697439e3d3307dd3eb44, type: 3}
+  audioSource: {fileID: -9061463985733506616}
+--- !u!82 &-9061463985733506616
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994430199723738641}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
