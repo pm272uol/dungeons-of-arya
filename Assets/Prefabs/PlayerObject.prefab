@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 828371193
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 99
   m_Sprite: {fileID: 356873946747716391, guid: bc132f9f5d100504ba658de03d5dafc3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 10
   startingHitPoints: 6
+  isDead: 0
   hitPoints: {fileID: 11400000, guid: b1050b81a00bb0643ab71f8d2e0e0143, type: 2}
   inventoryPrefab: {fileID: 4163299872554046925, guid: a895a96c1ba691a49a0d2b9808b7b1d6,
     type: 3}
