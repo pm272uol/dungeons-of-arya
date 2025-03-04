@@ -187,22 +187,18 @@ public class Weapon : MonoBehaviour
             switch (quadEnum) {
                 case Quadrant.East:
                     quadrantVector = new Vector2(1.0f, 0.0f);
-                    Debug.Log("Firing East");
                     break;
 
                 case Quadrant.South:
                     quadrantVector = new Vector2(0.0f, -1.0f);
-                    Debug.Log("Firing South");
                     break;
 
                 case Quadrant.West:
                     quadrantVector = new Vector2(-1.0f, 0.0f);
-                    Debug.Log("Firing West");
                     break;
 
                 case Quadrant.North:
                     quadrantVector = new Vector2(0.0f, 1.0f);
-                    Debug.Log("Firing North");
                     break;
 
                 default:

@@ -23,7 +23,6 @@ public class Boss : Character
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public override IEnumerator DamageCharacter(int damage, float interval) // Damage the enemy

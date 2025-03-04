@@ -15,10 +15,8 @@ public class SpawnPoint : MonoBehaviour
 
     public GameObject SpawnObject()
     {
-
         if (prefabToSpawn != null)
         {
-            Debug.Log(transform.position);
             return Instantiate(prefabToSpawn, transform.position, Quaternion.identity, null);
         }
         return null;

@@ -9,72 +9,28 @@ public class Fireball : MonoBehaviour
     private Coroutine damageCoroutine;
     public int damage = 1;
 
-    private int direction = -1;
-    private string directionId = "yDir";
+    public float speed = 5f;
+    private Vector2 moveDirection;
+
+    public void SetDirection(Vector2 direction)
+    {
+        moveDirection = direction.normalized;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        Animator animator = gameObject.GetComponent<Animator>(); 
-        animator.SetFloat(directionId, direction);
+    
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (directionId == "xDir")
-        {
-            if (direction == -1)
-            {
-                transform.position += new Vector3(-0.1f, 0, 0);
-            }
-            else if (direction == 1) {
-                transform.position += new Vector3(0.1f, 0, 0);
-            }
-        }
-        else if (directionId == "yDir")
-        {
-            if (direction == -1)
-            {
-                transform.position -= new Vector3(0, -0.1f, 0);
-            }
-            else if (direction == 1) 
-            {
-                transform.position -= new Vector3(0, 0.1f, 0);
-            }
-        }
-    }
-
-    public void SetDirection(Vector3 dir)
-    {
-        if (dir.x < 0)
-        {
-            directionId = "xDir";
-            direction = -1;
-        } 
-        else if (dir.x > 0) 
-        {
-            directionId = "xDir";
-            direction = 1;
-        } 
-        else if (dir.y < 0) 
-        {
-            directionId = "yDir";
-            direction = -1;
-        } 
-        else if (dir.y > 0) 
-        {
-            directionId = "yDir";
-            direction = 1;
-        }   
-        Debug.Log(dir);
-        Debug.Log(directionId);
-        Debug.Log(direction);
+        transform.position += (Vector3)(moveDirection * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Fireball collided with " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Player"))
         {
             Player player = collision.gameObject.GetComponent<Player>();

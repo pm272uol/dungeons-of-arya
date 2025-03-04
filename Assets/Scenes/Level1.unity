@@ -14356,12 +14356,12 @@ PrefabInstance:
     - target: {fileID: 6065601404401033118, guid: edfcdc98ec80cae4ab50950ec67c3d8b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.3
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 6065601404401033118, guid: edfcdc98ec80cae4ab50950ec67c3d8b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 134.2
+      value: -11.45
       objectReference: {fileID: 0}
     - target: {fileID: 6065601404401033118, guid: edfcdc98ec80cae4ab50950ec67c3d8b,
         type: 3}
@@ -40338,7 +40338,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.9745909
+  m_Radius: 4.466199
 --- !u!61 &1792872127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40454,9 +40454,9 @@ MonoBehaviour:
   directionChangeInteval: 3
   followPlayer: 1
   minX: 1
-  maxX: 2
+  maxX: 5
   minY: 1
-  maxY: 2
+  maxY: 5
 --- !u!114 &1792872131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40489,6 +40489,8 @@ MonoBehaviour:
   weaponPrefab: {fileID: 2628844785349469252, guid: eac2966f56e4f458b9f7212756206190,
     type: 3}
   spawnInterval: 1
+  firePoint: {fileID: 1792872124}
+  currentFacingDirection: 1
 --- !u!1 &1812340158
 GameObject:
   m_ObjectHideFlags: 0
