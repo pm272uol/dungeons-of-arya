@@ -182,10 +182,12 @@ MonoBehaviour:
   maxHitPoints: 10
   startingHitPoints: 6
   isDead: 0
+  musicManager: {fileID: 0}
   SwordSound: {fileID: 8300000, guid: 4cafecb89693d794588259bb0c527779, type: 3}
   HealPotion: {fileID: 8300000, guid: 5bcbe93a898c7a24f81b038ee9ac5809, type: 3}
   CoinSound: {fileID: 8300000, guid: 7a12b0f759794304c9db013ebbac12d7, type: 3}
   FlowerStoneSound: {fileID: 8300000, guid: 26e6dd7440e17064ca4dad0cf2bc2e3a, type: 3}
+  ChestSound: {fileID: 8300000, guid: a48b6f143bcf0b04fa4eb46faeaa805d, type: 3}
   audioSource: {fileID: 0}
   hitPoints: {fileID: 11400000, guid: b1050b81a00bb0643ab71f8d2e0e0143, type: 2}
   inventoryPrefab: {fileID: 4163299872554046925, guid: a895a96c1ba691a49a0d2b9808b7b1d6,
@@ -194,6 +196,7 @@ MonoBehaviour:
     type: 3}
   meleeRange: 1
   meleeDamage: 5
+  unbeatable: 0
 --- !u!114 &-4617664098865657483
 MonoBehaviour:
   m_ObjectHideFlags: 0

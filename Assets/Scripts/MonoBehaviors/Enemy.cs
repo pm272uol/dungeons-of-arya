@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class Enemy : Character
     Coroutine damageCoroutine;
 
     Animator animator;
+
+    public event Action<bool> OnDeath; //Event: true for Boss death, false for normal enemy
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,9 @@ public class Enemy : Character
             hitPoints = hitPoints - damage;
 
             if(hitPoints <= float.Epsilon){
+                // Trigger the death event
+                OnDeath?.Invoke(AnimatorHasParameter(GetComponent<Animator>(), "BossAttack1")); // Justify if this is a boss
+
                 KillCharacter();
                 break;
             }
@@ -69,10 +75,15 @@ public class Enemy : Character
 
             if (AnimatorHasParameter(animator, "BossAttack1")) // If the animator is a boss (has boss attack method)
             {
-                int randomAttackMethod = Random.Range(1, 4);
+                int randomAttackMethod = UnityEngine.Random.Range(1, 4);
 
                 if (randomAttackMethod == 1)
                 {
+                    if(musicManager != null)
+                    {
+                        musicManager.PlayBossAttack1(); // Play the sound of boss attack 1
+                    }
+
                     animator.SetBool("BossAttack1", true); // Set the method of attack to be method 1
 
                     if (damageCoroutine == null)
@@ -82,6 +93,11 @@ public class Enemy : Character
                 }
                 else if (randomAttackMethod == 2)
                 {
+                    if(musicManager != null)
+                    {
+                        musicManager.PlayBossAttack2(); // Play the sound of boss attack 1
+                    }
+
                     animator.SetBool("BossAttack2", true); // Set the method of attack to be method 2
 
                     if (damageCoroutine == null)
@@ -91,6 +107,11 @@ public class Enemy : Character
                 }
                 else if (randomAttackMethod == 3)
                 {
+                    if(musicManager != null)
+                    {
+                        musicManager.PlayBossAttack3(); // Play the sound of boss attack 3
+                    }     
+
                     animator.SetBool("BossAttack3", true); // Set the method of attack to be method 2
 
                     if (damageCoroutine == null)

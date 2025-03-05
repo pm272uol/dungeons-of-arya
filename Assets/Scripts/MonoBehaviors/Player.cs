@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Player : Character
@@ -10,6 +11,8 @@ public class Player : Character
     public AudioClip CoinSound; // The sound of coin sound
 
     public AudioClip FlowerStoneSound; // The sound of flower stone
+
+    public AudioClip ChestSound; // The sound of flower stone
 
     public AudioSource audioSource;
 
@@ -28,6 +31,11 @@ public class Player : Character
 
     private Animator animator;
 
+    public event Action OnPlayerDeath; // New event, when the player dies, this will trigger
+
+    public bool unbeatable = false;
+
+
     private void OnEnable()
     {
         ResetCharacter();
@@ -42,7 +50,7 @@ public class Player : Character
 
         if (musicManager == null)
         {
-            musicManager = FindObjectOfType<MusicManager>(); // 查找场景中的 MusicManager
+            musicManager = FindObjectOfType<MusicManager>(); 
             if (musicManager == null)
             {
                 Debug.LogWarning("No MusicManager found in the scene.");
@@ -190,9 +198,22 @@ public class Player : Character
                         shouldDisappear = true;
                         break;
 
-                    case Item.ItemType.CHEST: // If the object is a key
-                        
+                    case Item.ItemType.KEY: // If the object is a key
+
+                        // Play the sound of coins
+                        audioSource.PlayOneShot(CoinSound);
+
+                        shouldDisappear = inventory.AddItem(hitObject);
+
+                        shouldDisappear = true;
+                        break;
+
+                    case Item.ItemType.CHEST: // If the object is a chest
+
                         // Jump to the Game ending page
+
+                        // Play the sound of chest
+                        audioSource.PlayOneShot(ChestSound);
 
                         shouldDisappear = true;
                         break;
@@ -235,10 +256,15 @@ public class Player : Character
 
             StartCoroutine(FlickerCharacter()); // Flicker the character
 
-            hitPoints.value = hitPoints.value - damage;
+            if (!unbeatable)
+            {
+                hitPoints.value = hitPoints.value - damage;
+            }
+            
 
             if (hitPoints.value <= float.Epsilon)
             {
+
                 KillCharacter();
                 break;
             }
@@ -256,6 +282,8 @@ public class Player : Character
 
     public override void KillCharacter()
     {
+        OnPlayerDeath?.Invoke();
+
         base.KillCharacter();
 
         Destroy(healthbar.gameObject);

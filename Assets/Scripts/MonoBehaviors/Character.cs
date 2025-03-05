@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public abstract class Character : MonoBehaviour
@@ -12,11 +13,15 @@ public abstract class Character : MonoBehaviour
 
     [SerializeField] protected MusicManager musicManager; // Music Manager to play the music of getting damaged
 
+    
+
     public virtual void KillCharacter()
     {
+
         //Destroy(gameObject);
         isDead = true;
         gameObject.SetActive(false); // handle death logic, such as hiding the character
+
     }
 
 

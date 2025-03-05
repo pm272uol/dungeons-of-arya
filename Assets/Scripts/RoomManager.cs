@@ -8,6 +8,8 @@ public class RoomManager : MonoBehaviour
     private bool roomCompleted = false;
     [SerializeField] GameObject FlowerStone;
 
+    [SerializeField] bool EnableFlowerStone = false;
+
     void Start()
     {
         // Assign this RoomManager to each torch.
@@ -16,7 +18,11 @@ public class RoomManager : MonoBehaviour
             torch.SetRoomManager(this); 
         }
 
-        FlowerStone.SetActive(false);
+        if (!EnableFlowerStone)
+        {
+            FlowerStone.SetActive(false);
+        }
+        
     }
 
     public void TorchLit()
