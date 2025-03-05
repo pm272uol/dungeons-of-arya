@@ -12,4 +12,9 @@ public class Button_UI : MonoBehaviour
         SceneManager.LoadScene(newLevel);
     }
 
+        public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 }
