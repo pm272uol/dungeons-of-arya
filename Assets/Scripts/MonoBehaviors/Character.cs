@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public abstract class Character : MonoBehaviour
@@ -10,11 +11,17 @@ public abstract class Character : MonoBehaviour
 
     public bool isDead = false; // Check if the character is dead
 
+    [SerializeField] protected MusicManager musicManager; // Music Manager to play the music of getting damaged
+
+    
+
     public virtual void KillCharacter()
     {
+
         //Destroy(gameObject);
         isDead = true;
         gameObject.SetActive(false); // handle death logic, such as hiding the character
+
     }
 
 
@@ -24,6 +31,13 @@ public abstract class Character : MonoBehaviour
 
     public virtual IEnumerator FlickerCharacter()
     {
+        Debug.Log("Flicker the player");
+
+        if (musicManager != null)
+        {
+            musicManager.PlayDamageMusic();
+        }
+
         GetComponent<SpriteRenderer>().color = Color.red;
 
         yield return new WaitForSeconds(0.1f);

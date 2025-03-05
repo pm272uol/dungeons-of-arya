@@ -6,6 +6,9 @@ public class RoomManager : MonoBehaviour
     public List<Torch> torches; 
     public Door door;
     private bool roomCompleted = false;
+    [SerializeField] GameObject FlowerStone;
+
+    [SerializeField] bool EnableFlowerStone = false;
 
     void Start()
     {
@@ -14,6 +17,12 @@ public class RoomManager : MonoBehaviour
         {
             torch.SetRoomManager(this); 
         }
+
+        if (!EnableFlowerStone)
+        {
+            FlowerStone.SetActive(false);
+        }
+        
     }
 
     public void TorchLit()
@@ -23,6 +32,8 @@ public class RoomManager : MonoBehaviour
         {
             roomCompleted = true;
             door.OpenDoor();
+
+            FlowerStone.SetActive(true); // Set the flowerstone to be active
         }
     }
 
@@ -30,4 +41,6 @@ public class RoomManager : MonoBehaviour
     {
         return roomCompleted;
     }
+
+
 }

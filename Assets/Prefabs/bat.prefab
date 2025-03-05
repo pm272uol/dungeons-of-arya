@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 828371193
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 99
   m_Sprite: {fileID: -955609468180279937, guid: e8fa6fbdb67db794cb7a236f1b569bac,
     type: 3}
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHitPoints: 20
   startingHitPoints: 20
+  isDead: 0
   damageStrength: 1
 --- !u!58 &7888843274677340491
 CircleCollider2D:
@@ -201,7 +202,8 @@ MonoBehaviour:
   wanderSpeed: 0.8
   directionChangeInteval: 3
   followPlayer: 1
-  minX: 30
-  maxX: 40
-  minY: 23
-  maxY: 31
+  minX: 75.5
+  maxX: 86.2
+  minY: 21.8
+  maxY: 24.2
+  musicManager: {fileID: 0}

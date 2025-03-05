@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c63b0ffe29d274686bb3003346784a, type: 3}
+  m_Name: FlowerStone3
+  m_EditorClassIdentifier: 
+  objectName: FlowerStone3
+  sprite: {fileID: 2353761873487633424, guid: ad9ea348ac6e17f4dbf3052234b324c9, type: 3}
+  quantity: 0
+  stackable: 0
+  itemType: 4

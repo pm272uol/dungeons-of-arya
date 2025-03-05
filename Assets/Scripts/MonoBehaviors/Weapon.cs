@@ -25,6 +25,10 @@ public class Weapon : MonoBehaviour
 
     float negativeSlope;
 
+    public AudioClip AmmoSound; // The sound of ammo
+
+    public AudioSource audioSource;
+
     enum Quadrant
     {
         East,
@@ -100,6 +104,8 @@ public class Weapon : MonoBehaviour
 
     void FireAmmo()
     {
+        audioSource.PlayOneShot(AmmoSound); // Play the sound of ammo
+
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         GameObject ammo = SpawnAmmo(transform.position);

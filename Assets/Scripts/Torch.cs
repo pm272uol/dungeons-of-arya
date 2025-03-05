@@ -7,6 +7,10 @@ public class Torch : MonoBehaviour
     private bool isLit = false;
     private RoomManager roomManager;
 
+    public AudioClip TorchSound; // The sound of the torch
+
+    public AudioSource audioSource;
+
     public void SetRoomManager(RoomManager manager)
     {
         roomManager = manager;
@@ -14,8 +18,12 @@ public class Torch : MonoBehaviour
 
     public void LightTorch()
     {
+
         if (!isLit)
         {
+            // Play the sound of heal potion
+            audioSource.PlayOneShot(TorchSound);
+
             isLit = true;
             roomManager.TorchLit();
             // Enable animator on torch game component.
@@ -33,6 +41,7 @@ public class Torch : MonoBehaviour
     {
         if (other.CompareTag("Player")) // Player interacts with the torch
         {
+
             LightTorch();
         }
     }
