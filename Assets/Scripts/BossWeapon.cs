@@ -65,9 +65,6 @@ public class BossWeapon : MonoBehaviour
                 break;
         }
 
-        Debug.Log(fireballAnimator.GetFloat("xDir"));
-        Debug.Log(fireballAnimator.GetFloat("yDir"));
-
         // Set fireball's direction
         fireball.SetDirection(fireDirection);
     }

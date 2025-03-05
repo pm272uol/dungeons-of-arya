@@ -106,7 +106,16 @@ public class Player : Character
 
             // Damage the enemy
             Enemy enemyComponent = closestEnemy.GetComponent<Enemy>();
-            StartCoroutine(enemyComponent.DamageCharacter(meleeDamage, 0));
+            Boss boss = closestEnemy.GetComponent<Boss>();
+
+            if (enemyComponent != null)
+            {
+                StartCoroutine(enemyComponent.DamageCharacter(meleeDamage, 0));
+            } 
+            else if (boss != null) 
+            {
+                StartCoroutine(boss.DamageCharacter(meleeDamage, 0));
+            }
 
         } else // If the is not an enemy
         {
