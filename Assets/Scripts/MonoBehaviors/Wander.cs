@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,6 +35,10 @@ public class Wander : MonoBehaviour
 
     CircleCollider2D circleCollider;
 
+    [SerializeField] MusicManager musicManager; // Music manager to play the music of pursuiting
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +58,16 @@ public class Wander : MonoBehaviour
     void Update()
     {
         Debug.DrawLine(rb2d.position, endPosition, Color.red);
+
+        //if (targetTransform != null) // If the enemy sees the player
+        //{
+        //    musicManager.PlayBattleMusic();
+        //}
+        //else
+        //{
+        //    musicManager.StopBattleMusic();
+        //}
+
     }
 
     public IEnumerator WanderRoutine()
@@ -82,18 +97,11 @@ public class Wander : MonoBehaviour
     {
 
         // Generate random X and Y
-        float randomX = Random.Range(minX, maxX);
-        float randomY = Random.Range(minY, maxY);
+        float randomX = UnityEngine.Random.Range(minX, maxX);
+        float randomY = UnityEngine.Random.Range(minY, maxY);
 
         // Set endPosition as end point
         endPosition = new Vector3(randomX, randomY, 0); // Z stays for 0
-
-
-        //currentAngle += Random.Range(0, 360);
-
-        //currentAngle = Mathf.Repeat(currentAngle, 360);
-
-        //endPosition += Vector3FromAngle(currentAngle);
     }
 
     Vector3 Vector3FromAngle(float inputAngleDegrees)
@@ -107,19 +115,21 @@ public class Wander : MonoBehaviour
     public IEnumerator Move(Rigidbody2D rigidbodyToMove, float speed)
     {
         float remainingDistance = (transform.position - endPosition).sqrMagnitude;
+        //Debug.Log(this.gameObject + "distance: " + remainingDistance);
 
-        while(remainingDistance > float.Epsilon)
+        while (remainingDistance > float.Epsilon)
         {
-            if(targetTransform != null)
+            if (targetTransform != null)
             {
                 endPosition = targetTransform.position;
             }
 
-            if(rigidbodyToMove != null)
+            if (rigidbodyToMove != null)
             {
                 animator.SetBool("isWalking", true);
 
-                // Set the original position to be Vector3
+
+                //Set the original position to be Vector3
                 Vector3 originalPosition = new Vector3(rigidbodyToMove.position.x, rigidbodyToMove.position.y, 0);
 
                 // Calculate direction
@@ -134,16 +144,22 @@ public class Wander : MonoBehaviour
                 rb2d.MovePosition(newPosition);
 
                 remainingDistance = (transform.position - endPosition).sqrMagnitude;
+                //Debug.Log(this.gameObject + "distance: " + remainingDistance);
+
             }
 
             yield return new WaitForFixedUpdate();
         }
 
-        animator.SetBool("isWalking", false);
+        animator.SetBool("isWalking", false); // If the player is idle
+        //Debug.Log(this.gameObject + "is idle");
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // If the player collide with the enemy
+
+    private void OnTriggerEnter2D(Collider2D collision) // If the enemy detects the player
     {
+
         if (collision.gameObject.CompareTag("Player") && followPlayer)
         {
             currentSpeed = pursuitSpeed; // change the current speed to pursuit speed
@@ -156,11 +172,14 @@ public class Wander : MonoBehaviour
             }
 
             moveCoroutine = StartCoroutine(Move(rb2d, currentSpeed)); // Move to the target
+
+            musicManager.PlayBattleMusic(); // Start playing battle music here
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) // If the player run away from with the enemy
     {
+
         if (collision.gameObject.CompareTag("Player"))
         {
 
@@ -175,6 +194,8 @@ public class Wander : MonoBehaviour
             }
 
             targetTransform = null; // Set the target to null (stop chasing)
+
+            musicManager.StopBattleMusic(); // Start playing battle music here
         }
     }
 
@@ -185,4 +206,5 @@ public class Wander : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, circleCollider.radius);
         }
     }
+
 }

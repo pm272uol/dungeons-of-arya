@@ -59,33 +59,5 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("xDir", movement.x); // Set the direction of running
         animator.SetFloat("yDir", movement.y);
 
-
-
-
-        //if(movement.x == 0  && movement.y == 0)
-        //{
-        //    animator.SetBool(isrunning, false);
-        //} else
-        //{
-        //    animator.SetBool(isrunning, true);
-        //}
-
-            //if(movement.x > 0)
-            //{
-            //    animator.SetInteger(animationState, (int)CharStates.walkEast);
-            //}
-            //else if (movement.x < 0)
-            //{
-            //    animator.SetInteger(animationState, (int)CharStates.walkWest);
-            //}
-            //else if (movement.y > 0)
-            //{
-            //    animator.SetInteger(animationState, (int)CharStates.walkNorth);
-            //}
-            //else if (movement.y < 0)
-            //{
-            //    animator.SetInteger(animationState, (int)CharStates.walkSouth);
-            //}
-
     }
 }

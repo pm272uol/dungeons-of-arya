@@ -17,7 +17,13 @@ public class Item : ScriptableObject // The items of the player
     public enum ItemType
     {
         COIN,
-        HEALTH
+        HEALTH,
+        FLOWERSTONE1,
+        FLOWERSTONE2,
+        FLOWERSTONE3,
+        FLOWERSTONE4,
+        KEY,
+        CHEST
     }
 
     public ItemType itemType;

@@ -12,9 +12,16 @@ public class RoomManager2 : MonoBehaviour
     // Flag to check if the room has been completed
     private bool roomCompleted = false;
 
+    [SerializeField] GameObject FlowerStone; // The flowerstone of this room
+
     void Start()
     {
         // Initialization logic can be placed here if needed
+        if (FlowerStone != null)
+        {
+            FlowerStone.SetActive(false);
+        }
+        
     }
 
     void Update()
@@ -30,6 +37,12 @@ public class RoomManager2 : MonoBehaviour
         {
             roomCompleted = true; // Mark the room as completed
             door.OpenDoor(); // Open the door when all enemies are defeated
+
+            if(FlowerStone != null)
+            {
+                FlowerStone.SetActive(true);
+            }
+            
         }
     }
 

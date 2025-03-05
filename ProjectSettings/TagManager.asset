@@ -5,9 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - VirtualCamera
-  - EmenyObject
   - CanBePickedUp
-  - Wall
+  - EmenyObject
   layers:
   - Default
   - TransparentFX
@@ -17,9 +16,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Blocking
+  - Consumables
+  - Enemies
   - 
   - 
   - 
@@ -44,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Objects
+    uniqueID: 1743700055
     locked: 0
