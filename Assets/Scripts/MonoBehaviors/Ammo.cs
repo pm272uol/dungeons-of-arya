@@ -13,13 +13,18 @@ public class Ammo : MonoBehaviour // We can damage the enemy
         if (collision is BoxCollider2D)
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            Boss boss = collision.gameObject.GetComponent<Boss>();
 
             if (enemy != null)
             {
                 StartCoroutine(enemy.DamageCharacter(damageInflicted, 0.0f));
                 gameObject.SetActive(false);
+            } 
+            else if (boss != null)
+            {
+                StartCoroutine(boss.DamageCharacter(damageInflicted, 0.0f));
+                gameObject.SetActive(false);
             }
-
             else
             {
                 StartCoroutine(DeactivateAfterTime(lifetime));
