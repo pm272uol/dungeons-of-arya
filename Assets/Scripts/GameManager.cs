@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public int requiredTorches = 4;
     public GameObject treasureChest; // Assign in Inspector
 
+    public GameObject pauseMenu;
+    private bool isPaused = false;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,9 +29,43 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
+    }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
+    }
+
+    public void PauseGame()
+    {
+        pauseMenu.SetActive(true);    // Show the pause menu
+        Time.timeScale = 0f;            // Freeze the game
+        isPaused = true;
+    }
+
+    public void ResumeGame()
+    {
+        pauseMenu.SetActive(false);   // Hide the pause menu
+        Time.timeScale = 1f;            // Resume the game
+        isPaused = false;
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quitting game...");
+        Application.Quit();              // Works in builds, not the editor
     }
 
     public void LightTorch()
@@ -59,7 +96,6 @@ public class GameManager : MonoBehaviour
     public void SetupScene()
     {
         SpawnPlayer();
-        //SpawnEnemy();
     }
 
     public void SpawnPlayer()
@@ -70,13 +106,4 @@ public class GameManager : MonoBehaviour
             cameraManager.virtualCamera.Follow = player.transform;
         }
     }
-
-    //public void SpawnEnemy()
-    //{
-    //    if (enemySpawnPoint != null)
-    //    {
-    //        GameObject enemy = enemySpawnPoint.SpawnObject();
-    //    }
-    //}
 }
-

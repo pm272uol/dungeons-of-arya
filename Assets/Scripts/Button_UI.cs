@@ -5,16 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class Button_UI : MonoBehaviour
 {
-    [SerializeField] private string newLevel = "TestMap - Bill";
+    [SerializeField] private string gameScene = "Main";
+    [SerializeField] private string tutorialScene = "Tutorial";
+    [SerializeField] private string menuScene = "StartMenu";
     
     public void StartGameButton()
     {
-        SceneManager.LoadScene(newLevel);
+        SceneManager.LoadScene(gameScene);
     }
 
-        public void QuitGame()
+    public void TutorialButton()
     {
-        Application.Quit();
+        SceneManager.LoadScene(tutorialScene);
     }
 
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(menuScene);
+    }
 }
