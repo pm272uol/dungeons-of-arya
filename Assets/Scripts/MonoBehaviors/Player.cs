@@ -36,6 +36,7 @@ public class Player : Character
 
     public bool unbeatable = false;
     private string gameOverScene = "GameOver";
+    private string gameWinScene = "GameCleared";
 
 
     private void OnEnable()
@@ -140,7 +141,7 @@ public class Player : Character
 
             Item hitObject = collision.gameObject.GetComponent<Consumable>().item; // Get the item of the consumable if the player hit the object
 
-            if(hitObject != null)
+            if (hitObject != null)
             {
                 bool shouldDisappear = false;
 
@@ -227,6 +228,7 @@ public class Player : Character
                         audioSource.PlayOneShot(ChestSound);
 
                         shouldDisappear = true;
+                        SceneManager.LoadScene(gameWinScene);
                         break;
 
                     default:

@@ -10,6 +10,8 @@ public class RoomManager : MonoBehaviour
 
     [SerializeField] bool EnableFlowerStone = false;
 
+    public GameObject chest;
+
     void Start()
     {
         // Assign this RoomManager to each torch.
@@ -41,6 +43,4 @@ public class RoomManager : MonoBehaviour
     {
         return roomCompleted;
     }
-
-
 }

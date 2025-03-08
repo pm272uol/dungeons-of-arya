@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -64,8 +65,7 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quitting game...");
-        Application.Quit();              // Works in builds, not the editor
+        SceneManager.LoadScene("StartMenu");
     }
 
     public void LightTorch()
