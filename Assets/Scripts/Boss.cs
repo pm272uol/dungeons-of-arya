@@ -14,6 +14,8 @@ public class Boss : Character
 
     public bool isAttack = false;
 
+    public RoomManager roomManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,7 @@ public class Boss : Character
 
             if(hitPoints <= float.Epsilon){
                 KillCharacter();
+                roomManager.chest.SetActive(true);
                 break;
             }
 
@@ -66,6 +69,7 @@ public class Boss : Character
             Player player = collision.gameObject.GetComponent<Player>();
 
             animator.SetBool("Attack", true); // Set the animation of attack
+            
 
             if (damageCoroutine == null)
             {
@@ -80,12 +84,30 @@ public class Boss : Character
         {
 
             animator.SetBool("Attack", false); // finish the animation of attack
+            isAttack = false;
 
             if (damageCoroutine != null)
             {
                 StopCoroutine(damageCoroutine);
                 damageCoroutine = null;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) // If the enemy detects the player
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isAttack = true;   
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) // If the player run away from with the enemy
+    {
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isAttack = true;   
         }
     }
 }
