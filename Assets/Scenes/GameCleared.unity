@@ -226,7 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323a811fe18203c42a51ce38722ee4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newLevel: TestMap - Bill
+  gameScene: Main
+  tutorialScene: Tutorial
+  menuScene: StartMenu
 --- !u!4 &578364897
 Transform:
   m_ObjectHideFlags: 0
@@ -272,7 +274,7 @@ RectTransform:
   m_GameObject: {fileID: 583945575}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7978862, y: 2.2015414, z: 1.5203803}
+  m_LocalScale: {x: 0.41005802, y: 1.36686, z: 1.0390735}
   m_Children:
   - {fileID: 692949689}
   m_Father: {fileID: 277457596}
@@ -280,8 +282,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.6, y: -177}
-  m_SizeDelta: {x: 232.3, y: 38}
+  m_AnchoredPosition: {x: -14, y: -174}
+  m_SizeDelta: {x: 350, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583945577
 MonoBehaviour:
@@ -680,7 +682,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '>>> Quit <<<'
+  m_Text: '>>> Main Menu <<<'
 --- !u!222 &692949691
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -723,7 +725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.950012, y: 44.010925}
+  m_AnchoredPosition: {x: -13.949951, y: 44.010925}
   m_SizeDelta: {x: -615.30005, y: -286.77814}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &822798717
@@ -894,7 +896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

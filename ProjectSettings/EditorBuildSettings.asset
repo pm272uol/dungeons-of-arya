@@ -6,9 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestMap - Bill.unity
-    guid: dd2ae73a4ad7dad4c8bf8629831c278d
-  - enabled: 1
     path: Assets/Scenes/StartMenu.unity
     guid: 3b232f02f190f564eb64393b24c8a96a
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 6aa6397ff3f8c3141bacd1434cee3265
+  - enabled: 1
+    path: Assets/Scenes/GameCleared.unity
+    guid: bd8a5c665d7be564e9d62ab7beabbeb4
+  - enabled: 1
+    path: Assets/Scenes/PauseMenu.unity
+    guid: 9ebfcd152e49d4a0ea09a6324e0bbe46
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: c6e5e4385689c254b979031be9760baa
   m_configObjects: {}

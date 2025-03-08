@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
@@ -34,6 +35,8 @@ public class Player : Character
     public event Action OnPlayerDeath; // New event, when the player dies, this will trigger
 
     public bool unbeatable = false;
+    private string gameOverScene = "GameOver";
+    private string gameWinScene = "GameCleared";
 
 
     private void OnEnable()
@@ -138,7 +141,7 @@ public class Player : Character
 
             Item hitObject = collision.gameObject.GetComponent<Consumable>().item; // Get the item of the consumable if the player hit the object
 
-            if(hitObject != null)
+            if (hitObject != null)
             {
                 bool shouldDisappear = false;
 
@@ -225,6 +228,7 @@ public class Player : Character
                         audioSource.PlayOneShot(ChestSound);
 
                         shouldDisappear = true;
+                        SceneManager.LoadScene(gameWinScene);
                         break;
 
                     default:
@@ -297,6 +301,7 @@ public class Player : Character
 
         Destroy(healthbar.gameObject);
         Destroy(inventory.gameObject);
+        SceneManager.LoadScene(gameOverScene);
     }
 
     public override void ResetCharacter()
